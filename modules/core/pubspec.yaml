@@ -1,0 +1,30 @@
+name: core
+description: A new Flutter package project.
+publish_to: none
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  google_fonts: ^3.0.1
+  equatable: ^2.0.5
+  cached_network_image: ^3.0.0
+  flutter_svg: ^1.1.6
+  provider: ^6.0.4
+
+
+  comics:
+    path: ../comics
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:

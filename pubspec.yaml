@@ -1,0 +1,39 @@
+name: velsco
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  get_it: ^7.2.0
+  http: ^0.13.5
+  flutter_bloc: ^8.1.1
+  flutter_svg: ^1.1.6
+  provider: ^6.0.4
+
+
+  core:
+    path: modules/core
+  comics:
+    path: modules/comics
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/
+
