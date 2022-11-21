@@ -20,10 +20,10 @@ dependencies:
   flutter_svg: ^1.1.6
   provider: ^6.0.4
 
-
-
   core:
     path: ../core
+  character:
+    path: ../character
 
 dev_dependencies:
   flutter_test:

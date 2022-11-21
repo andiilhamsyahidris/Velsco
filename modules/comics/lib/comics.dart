@@ -9,3 +9,4 @@ export 'domain/repositories/comics_repository.dart';
 export 'domain/usecases/get_comics.dart';
 export 'presentation/state/bloc/comics_bloc/comics_bloc.dart';
 export 'presentation/state/provider/comics_provider.dart';
+export 'presentation/widgets/comics_card.dart';

@@ -1,6 +1,7 @@
+import 'package:character/character.dart';
+import 'package:character/presentation/states/bloc/bloc/characters_bloc.dart';
 import 'package:comics/comics.dart';
 import 'package:comics/presentation/pages/comics_page.dart';
-import 'package:comics/presentation/state/provider/comics_provider.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +23,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<ComicsBloc>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<CharactersBloc>(),
+        ),
         ChangeNotifierProvider(
           create: (_) => ComicsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CharactersProvider(),
         ),
       ],
       child: MaterialApp(
@@ -40,6 +47,8 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case '/home':
               return MaterialPageRoute(builder: (_) => const ComicsPage());
+            case CharactersPage.route:
+              return MaterialPageRoute(builder: (_) => const CharactersPage());
           }
         },
       ),

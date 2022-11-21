@@ -5,6 +5,10 @@ const Color kRichBlack = Color(0xFF000814);
 const Color kWhite = Color(0xFFfafafa);
 const Color kRed = Color(0xFFcd141e);
 
+const apikey = 'apikey=036446a24abfc5767afd3ed1bb5b744e';
+const hash = 'hash=5d0a66f2eecbd557c4fb7a6d7c280c0b';
+const baseUrl = 'https://gateway.marvel.com/v1/public';
+
 final TextStyle title =
     GoogleFonts.marvel(fontSize: 33, fontWeight: FontWeight.w800);
 

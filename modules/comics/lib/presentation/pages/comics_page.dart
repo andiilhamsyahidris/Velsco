@@ -1,3 +1,4 @@
+import 'package:character/character.dart';
 import 'package:comics/comics.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
@@ -41,13 +42,14 @@ class ComicsPageState extends State<ComicsPage> {
                   color: kRed,
                 ),
               ),
-              const ListTile(
-                leading: Icon(Icons.account_circle_sharp),
-                title: Text('Characters'),
-                trailing: Icon(
+              ListTile(
+                leading: const Icon(Icons.account_circle_sharp),
+                title: const Text('Characters'),
+                trailing: const Icon(
                   Icons.arrow_right,
                   color: kRed,
                 ),
+                onTap: () => Navigator.pushNamed(context, CharactersPage.route),
               ),
               const ListTile(
                 leading: Icon(Icons.supervisor_account_rounded),

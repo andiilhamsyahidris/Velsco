@@ -24,6 +24,8 @@ dependencies:
     path: modules/core
   comics:
     path: modules/comics
+  character:
+    path: modules/character
 
 dev_dependencies:
   flutter_test:

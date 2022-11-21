@@ -7,4 +7,3 @@ export 'common/custom_information.dart';
 export 'common/utils.dart';
 export 'data/models/image_model.dart';
 export 'domain/entities/images.dart';
-export 'presentation/widgets/comics_card.dart';

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:comics/data/models/comics_model.dart';
 import 'package:comics/data/models/comics_response.dart';
-import 'package:core/common/exception.dart';
+import 'package:core/core.dart';
 import 'package:http/http.dart' as http;
 
 abstract class ComicsRemoteDatasource {
@@ -10,10 +10,6 @@ abstract class ComicsRemoteDatasource {
 }
 
 class ComicsRemoteDatasourceImpl implements ComicsRemoteDatasource {
-  static const apikey = 'apikey=036446a24abfc5767afd3ed1bb5b744e';
-  static const hash = 'hash=5d0a66f2eecbd557c4fb7a6d7c280c0b';
-  static const baseUrl = 'https://gateway.marvel.com/v1/public';
-
   final http.Client client;
 
   ComicsRemoteDatasourceImpl({required this.client});
