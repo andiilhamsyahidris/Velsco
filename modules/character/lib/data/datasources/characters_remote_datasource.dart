@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:character/character.dart';
-import 'package:character/data/models/characters_response.dart';
 import 'package:core/core.dart';
 import 'package:http/http.dart' as http;
 

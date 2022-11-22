@@ -26,6 +26,8 @@ dependencies:
     path: modules/comics
   character:
     path: modules/character
+  events:
+    path: modules/events
 
 dev_dependencies:
   flutter_test:

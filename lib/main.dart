@@ -3,6 +3,7 @@ import 'package:character/presentation/states/bloc/bloc/characters_bloc.dart';
 import 'package:comics/comics.dart';
 import 'package:comics/presentation/pages/comics_page.dart';
 import 'package:core/core.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -26,12 +27,18 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<CharactersBloc>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<EventsBloc>(),
+        ),
         ChangeNotifierProvider(
           create: (_) => ComicsProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => CharactersProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => EventsProvider(),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -49,6 +56,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const ComicsPage());
             case CharactersPage.route:
               return MaterialPageRoute(builder: (_) => const CharactersPage());
+            case EventsPage.route:
+              return MaterialPageRoute(builder: (_) => const EventsPage());
           }
         },
       ),

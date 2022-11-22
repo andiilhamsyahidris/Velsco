@@ -1,27 +1,27 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:character/presentation/states/bloc/bloc/characters_bloc.dart';
-import 'package:character/presentation/states/provider/characters_provider.dart';
-import 'package:character/presentation/widgets/characters_card.dart';
 import 'package:core/core.dart';
+import 'package:events/presentation/states/bloc/events_bloc/events_bloc.dart';
+import 'package:events/presentation/states/provider/events_provider.dart';
+import 'package:events/presentation/widgets/events_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-class CharactersPage extends StatefulWidget {
-  static const route = '/characters';
+class EventsPage extends StatefulWidget {
+  static const route = '/events';
 
-  const CharactersPage({super.key});
+  const EventsPage({super.key});
 
   @override
-  CharactersPageState createState() => CharactersPageState();
+  EventsPageState createState() => EventsPageState();
 }
 
-class CharactersPageState extends State<CharactersPage> {
+class EventsPageState extends State<EventsPage> {
   @override
   void initState() {
     super.initState();
     Future.microtask(
-      () => context.read<CharactersBloc>().add(FetchCharacterList()),
+      () => context.read<EventsBloc>().add(FetchEventsList()),
     );
   }
 
@@ -31,9 +31,9 @@ class CharactersPageState extends State<CharactersPage> {
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
-          child: Consumer<CharactersProvider>(
-            builder: (context, charactersProvider, child) {
-              return _buildContent(charactersProvider);
+          child: Consumer<EventsProvider>(
+            builder: (context, eventProvider, child) {
+              return _buildContent(eventProvider);
             },
           ),
         ),
@@ -41,8 +41,8 @@ class CharactersPageState extends State<CharactersPage> {
     );
   }
 
-  Column _buildContent(CharactersProvider charactersProvider) {
-    if (charactersProvider.isTap == false) {
+  Column _buildContent(EventsProvider eventsProvider) {
+    if (eventsProvider.isTap == false) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,7 +50,7 @@ class CharactersPageState extends State<CharactersPage> {
             children: [
               CachedNetworkImage(
                 imageUrl:
-                    'http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg',
+                    'http://i.annihil.us/u/prod/marvel/i/mg/9/40/51ca10d996b8b.jpg',
                 placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(),
                 ),
@@ -88,7 +88,7 @@ class CharactersPageState extends State<CharactersPage> {
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
-              '3-D Man',
+              'Acts of Vengeancel',
               style: title,
             ),
           ),
@@ -106,7 +106,7 @@ class CharactersPageState extends State<CharactersPage> {
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Text(
-              charactersProvider.description ?? '',
+              'Loki sets about convincing the super-villains of Earth to attack heroes other than those they normally fight in an attempt to destroy the Avengers to absolve his guilt over inadvertently creating the team in the first place.',
               style: bodyText,
             ),
           ),
@@ -117,16 +117,13 @@ class CharactersPageState extends State<CharactersPage> {
             padding: const EdgeInsets.only(left: 20),
             child: _buildSubHeading(title: 'Show more', onTap: () {}),
           ),
-          const SizedBox(
-            height: 15,
-          ),
-          BlocBuilder<CharactersBloc, CharactersState>(
+          BlocBuilder<EventsBloc, EventsState>(
             builder: (context, state) {
-              if (state is CharactersLoading) {
+              if (state is EventsLoading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if (state is CharactersError) {
+              } else if (state is EventsError) {
                 return const Center(
                   child: CustomInformation(
                     imgPath: 'assets/error.svg',
@@ -134,8 +131,8 @@ class CharactersPageState extends State<CharactersPage> {
                     subtitleInformation: 'Wait a moment',
                   ),
                 );
-              } else if (state is CharactersHasData) {
-                final result = state.getCharacters;
+              } else if (state is EventsHasData) {
+                final result = state.getEvents;
                 return Container(
                   height: 200,
                   padding: const EdgeInsets.only(left: 20),
@@ -143,8 +140,7 @@ class CharactersPageState extends State<CharactersPage> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       final data = result[index];
-                      return CharactersCard(
-                          characters: data, images: data.images);
+                      return EventsCard(events: data, images: data.images);
                     },
                     separatorBuilder: (context, index) =>
                         const SizedBox(width: 10),
@@ -170,8 +166,7 @@ class CharactersPageState extends State<CharactersPage> {
         Stack(
           children: [
             CachedNetworkImage(
-              imageUrl:
-                  '${charactersProvider.imgPath}.${charactersProvider.extension}',
+              imageUrl: '${eventsProvider.imgPath}.${eventsProvider.extension}',
               placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(),
               ),
@@ -209,7 +204,7 @@ class CharactersPageState extends State<CharactersPage> {
         Padding(
           padding: const EdgeInsets.only(left: 20),
           child: Text(
-            charactersProvider.name,
+            eventsProvider.name,
             style: title,
           ),
         ),
@@ -227,7 +222,7 @@ class CharactersPageState extends State<CharactersPage> {
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Text(
-            charactersProvider.description ?? '',
+            eventsProvider.description ?? '',
             style: bodyText,
           ),
         ),
@@ -238,13 +233,13 @@ class CharactersPageState extends State<CharactersPage> {
           padding: const EdgeInsets.only(left: 20),
           child: _buildSubHeading(title: 'Show more', onTap: () {}),
         ),
-        BlocBuilder<CharactersBloc, CharactersState>(
+        BlocBuilder<EventsBloc, EventsState>(
           builder: (context, state) {
-            if (state is CharactersLoading) {
+            if (state is EventsLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is CharactersError) {
+            } else if (state is EventsError) {
               return const Center(
                 child: CustomInformation(
                   imgPath: 'assets/error.svg',
@@ -252,8 +247,8 @@ class CharactersPageState extends State<CharactersPage> {
                   subtitleInformation: 'Wait a moment',
                 ),
               );
-            } else if (state is CharactersHasData) {
-              final result = state.getCharacters;
+            } else if (state is EventsHasData) {
+              final result = state.getEvents;
               return Container(
                 height: 200,
                 padding: const EdgeInsets.only(left: 20),
@@ -261,8 +256,7 @@ class CharactersPageState extends State<CharactersPage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     final data = result[index];
-                    return CharactersCard(
-                        characters: data, images: data.images);
+                    return EventsCard(events: data, images: data.images);
                   },
                   separatorBuilder: (context, index) =>
                       const SizedBox(width: 10),

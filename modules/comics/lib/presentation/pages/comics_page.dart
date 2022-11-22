@@ -1,6 +1,7 @@
 import 'package:character/character.dart';
 import 'package:comics/comics.dart';
 import 'package:core/core.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -59,13 +60,14 @@ class ComicsPageState extends State<ComicsPage> {
                   color: kRed,
                 ),
               ),
-              const ListTile(
-                leading: Icon(Icons.event),
-                title: Text('Events'),
-                trailing: Icon(
+              ListTile(
+                leading: const Icon(Icons.event),
+                title: const Text('Events'),
+                trailing: const Icon(
                   Icons.arrow_right,
                   color: kRed,
                 ),
+                onTap: () => Navigator.pushNamed(context, EventsPage.route),
               ),
               const ListTile(
                 leading: Icon(Icons.featured_play_list_rounded),
