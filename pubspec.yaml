@@ -28,6 +28,8 @@ dependencies:
     path: modules/character
   events:
     path: modules/events
+  series:
+    path: modules/series
 
 dev_dependencies:
   flutter_test:

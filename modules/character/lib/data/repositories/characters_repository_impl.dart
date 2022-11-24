@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:character/character.dart';
-import 'package:core/common/failure.dart';
 import 'package:core/core.dart';
 import 'package:dartz/dartz.dart';
 

@@ -7,6 +7,9 @@ import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:series/presentation/pages/series_page.dart';
+import 'package:series/presentation/states/bloc/series_bloc/series_bloc.dart';
+import 'package:series/presentation/states/provider/series_provider.dart';
 import 'package:velsco/injection.dart' as di;
 
 void main() {
@@ -30,6 +33,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<EventsBloc>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<SeriesBloc>(),
+        ),
         ChangeNotifierProvider(
           create: (_) => ComicsProvider(),
         ),
@@ -38,6 +44,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => EventsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SeriesProvider(),
         )
       ],
       child: MaterialApp(
@@ -58,6 +67,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const CharactersPage());
             case EventsPage.route:
               return MaterialPageRoute(builder: (_) => const EventsPage());
+            case SeriesPage.route:
+              return MaterialPageRoute(builder: (_) => const SeriesPage());
           }
         },
       ),

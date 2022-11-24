@@ -1,30 +1,34 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:character/character.dart';
 import 'package:core/core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:series/presentation/states/provider/series_provider.dart';
+import 'package:series/series.dart';
 
-class CharactersCard extends StatelessWidget {
+class SeriesCard extends StatelessWidget {
   final Images images;
-  final Character characters;
+  final Series series;
 
-  const CharactersCard({
+  const SeriesCard({
     super.key,
-    required this.characters,
     required this.images,
+    required this.series,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CharactersProvider>(
-      builder: (context, charactersProvider, child) {
+    return Consumer<SeriesProvider>(
+      builder: (context, seriesProvider, child) {
         return InkWell(
           onTap: () {
-            charactersProvider.isTap = true;
-            charactersProvider.imgPath = images.path;
-            charactersProvider.extension = images.extension;
-            charactersProvider.name = characters.name;
-            charactersProvider.desc = characters.description ?? '';
+            seriesProvider.isTap = true;
+            seriesProvider.imgPath = images.path;
+            seriesProvider.extension = images.extension;
+            seriesProvider.name = series.title;
+            seriesProvider.rating = series.rating ?? '';
+            seriesProvider.start = series.start;
+            seriesProvider.end = series.end;
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),

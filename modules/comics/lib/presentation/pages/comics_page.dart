@@ -5,6 +5,7 @@ import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:series/series.dart';
 
 class ComicsPage extends StatefulWidget {
   const ComicsPage({super.key});
@@ -69,13 +70,14 @@ class ComicsPageState extends State<ComicsPage> {
                 ),
                 onTap: () => Navigator.pushNamed(context, EventsPage.route),
               ),
-              const ListTile(
-                leading: Icon(Icons.featured_play_list_rounded),
-                title: Text('Series'),
-                trailing: Icon(
+              ListTile(
+                leading: const Icon(Icons.featured_play_list_rounded),
+                title: const Text('Series'),
+                trailing: const Icon(
                   Icons.arrow_right,
                   color: kRed,
                 ),
+                onTap: () => Navigator.pushNamed(context, SeriesPage.route),
               ),
               const ListTile(
                 leading: Icon(Icons.auto_stories_rounded),

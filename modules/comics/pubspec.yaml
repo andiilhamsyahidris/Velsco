@@ -26,6 +26,8 @@ dependencies:
     path: ../character
   events:
     path: ../events
+  series:
+    path: ../series
 
 dev_dependencies:
   flutter_test:
